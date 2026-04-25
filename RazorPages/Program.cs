@@ -1,3 +1,4 @@
+using RazorPages.Models;
 using RazorPages.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
+
+builder.Services.AddDbContext<DataContext>();
 
 var app = builder.Build();
 

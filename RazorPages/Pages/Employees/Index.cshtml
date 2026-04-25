@@ -1,4 +1,4 @@
-﻿@page "/employeelist"
+﻿@page 
 @using Microsoft.AspNetCore.Mvc.RazorPages
 @using RazorPages.Models
 @using RazorPages.Repository
@@ -15,7 +15,7 @@
                     <img src="~/img/@emp.Photo" alt="" class="card-img-top">
                     <div class="card-title">@emp.Name</div>
                     <p class="card-text">@emp.Department</p>
-                    <a href="#" class="btn btn-primary">Details</a>
+                    <a asp-page="/employees/details" asp-route-id="@emp.Id" class="btn btn-primary">Details</a>
                 </div>
             </div>
         }

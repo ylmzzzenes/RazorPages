@@ -1,4 +1,5 @@
 ﻿using RazorPages.Models;
+using System.Linq;
 
 namespace RazorPages.Repository
 {
@@ -22,6 +23,11 @@ namespace RazorPages.Repository
         public IEnumerable<Employee> GetAll()
         {
             return _employeeList;
+        }
+
+        public Employee GetById(int id)
+        {
+            return _employeeList.FirstOrDefault(e => e.Id == id);
         }
     }
 }

@@ -1,4 +1,18 @@
-﻿@page
+﻿@page "{id}"
 @model RazorPages.Pages.Employees.DetailsModel
 @{
+	ViewData["Title"] = "Employee Details";
 }
+
+<div class="row">
+    <div class="col-md-4 mb-2">
+        <div class="card">
+            <img src="~/img/@Model.Employee.Photo" alt="" class="card-img-top">
+            <div class="card-title">@Model.Employee.Name</div>
+            <p class="card-text">@Model.Employee.Department</p>
+            <a asp-page="/Employees/Index" class="btn btn-primary">Geri Dön</a>
+        </div>
+    </div>
+</div>
+
+

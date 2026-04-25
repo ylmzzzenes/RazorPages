@@ -11,11 +11,12 @@
     <div class="row">
         @foreach(var emp in Model.EmployeeList){
             <div class="col-md-3 mb-2">
-                <div class="card">
+                <div class="card ">
                     <img src="~/img/@emp.Photo" alt="" class="card-img-top">
                     <div class="card-title">@emp.Name</div>
                     <p class="card-text">@emp.Department</p>
-                    <a asp-page="/employees/details" asp-route-id="@emp.Id" class="btn btn-primary">Details</a>
+                <a asp-page="/employees/details" asp-route-id="@emp.Id" class="btn btn-primary">Details</a>
+                <a asp-page="/employees/edit" asp-route-id="@emp.Id" class="btn btn-primary">Edit</a>
                 </div>
             </div>
         }

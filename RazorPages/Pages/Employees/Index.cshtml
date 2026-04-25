@@ -1,19 +1,41 @@
-﻿@page
+﻿@page "/employeelist"
 @using Microsoft.AspNetCore.Mvc.RazorPages
+@using RazorPages.Models
+@using RazorPages.Repository
+@model IndexModel
 @{
-	ViewData["Title"] = "Employees"; 
+    ViewData["Title"] = "Employees"; 
 }
 
-<h1>Employess</h1>
-
-
-@functions{
-    public class IndexModel : PageModel
-    {
-        public string Message { get; set; } = string.Empty;
-        public void OnGet()
-        {
-            Message = "ASP.NET Razor pages ";
+<h1>Employees</h1>
+    <div class="row">
+        @foreach(var emp in Model.EmployeeList){
+            <div class="col-md-3 mb-2">
+                <div class="card">
+                    <img src="~/img/@emp.Photo" alt="" class="card-img-top">
+                    <div class="card-title">@emp.Name</div>
+                    <p class="card-text">@emp.Department</p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                </div>
+            </div>
         }
+    </div>
+
+
+    @functions{
+        public class IndexModel : PageModel
+        {
+            public IEnumerable<Employee> EmployeeList = new List<Employee>();
+            private readonly IEmployeeRepository _employeeRepositoy;
+
+			public IndexModel(IEmployeeRepository employeeRepository)
+			{
+				_employeeRepositoy = employeeRepository;
+			}
+			public void OnGet()
+			{
+				EmployeeList = _employeeRepositoy.GetAll();
+			}
+
     }
 }
